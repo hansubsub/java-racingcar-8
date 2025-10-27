@@ -9,10 +9,10 @@ public class RaceManager {
 
     private final Race race;
 
-    public RaceManager(List<Car> cars, Round round){
+    public RaceManager(List<Car> cars){
         validateCars(cars);
         this.cars = cars;
-        this.race = new Race(cars, round);
+        this.race = new Race(cars);
     }
 
     private void validateCars(List<Car> cars) {
