@@ -9,21 +9,28 @@ public class Car {
     private int position = 0;
 
     public Car(String carName){
-        validate(carName);
-        this.name = carName;
+        validateNotEmpty(carName);
+        validateNoSpace(carName);
+        validateLength(carName);        this.name = carName;
     }
 
     public void move(){
         position +=1;
     }
 
-    private void validate(String carName) {
+    private void validateNotEmpty(String carName) {
         if (carName.isEmpty()) {
             throw new IllegalArgumentException(ERROR_CAR_NAME_NO_EMPTY);
         }
+    }
+
+    private void validateNoSpace(String carName) {
         if (carName.contains(" ")) {
             throw new IllegalArgumentException(ERROR_CAR_NAME_NO_SPACE);
         }
+    }
+
+    private void validateLength(String carName) {
         if (carName.length() > 5) {
             throw new IllegalArgumentException(ERROR_CAR_NAME_TOO_LONG);
         }

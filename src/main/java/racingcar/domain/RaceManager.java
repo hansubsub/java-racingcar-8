@@ -10,16 +10,19 @@ public class RaceManager {
     private final Race race;
 
     public RaceManager(List<Car> cars){
-        validateCars(cars);
+        validateCarCount(cars);
+        validateDuplicateNames(cars);
         this.cars = cars;
         this.race = new Race(cars);
     }
 
-    private void validateCars(List<Car> cars) {
+    private void validateCarCount(List<Car> cars) {
         if (cars.size() < 2) {
             throw new IllegalArgumentException(ERROR_NOT_ENOUGH_CARS);
         }
+    }
 
+    private void validateDuplicateNames(List<Car> cars) {
         long distinctCount = cars.stream()
                 .map(Car::getName)
                 .distinct()
