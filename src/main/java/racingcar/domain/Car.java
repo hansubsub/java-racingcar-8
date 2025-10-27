@@ -18,14 +18,14 @@ public class Car {
     }
 
     private void validate(String carName) {
-        if(carName.length()>5){
-            throw new IllegalArgumentException(ERROR_CAR_NAME_TOO_LONG);
+        if (carName.isEmpty()) {
+            throw new IllegalArgumentException(ERROR_CAR_NAME_NO_EMPTY);
         }
         if (carName.contains(" ")) {
             throw new IllegalArgumentException(ERROR_CAR_NAME_NO_SPACE);
         }
-        if (carName.isEmpty()) {
-            throw new IllegalArgumentException(ERROR_CAR_NAME_NO_EMPTY);
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException(ERROR_CAR_NAME_TOO_LONG);
         }
     }
 
